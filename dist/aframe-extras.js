@@ -4719,7 +4719,7 @@ module.exports = THREE.FBXLoader = function () {
 
 			var transform = generateTransform(transformData);
 
-			model.applyMatrix(transform);
+			model.applyMatrix4(transform);
 		},
 
 		setLookAtProperties: function setLookAtProperties(model, modelNode) {
@@ -11127,7 +11127,7 @@ module.exports = AFRAME.registerComponent('nav-mesh', {
     var navMeshGeometry = navMesh.geometry.isBufferGeometry ? new THREE.Geometry().fromBufferGeometry(navMesh.geometry) : navMesh.geometry.clone();
 
     scene.updateMatrixWorld();
-    navMeshGeometry.applyMatrix(navMesh.matrixWorld);
+    navMeshGeometry.applyMatrix4(navMesh.matrixWorld);
     this.system.setNavMeshGeometry(navMeshGeometry);
 
     this.hasLoadedNavMesh = true;
