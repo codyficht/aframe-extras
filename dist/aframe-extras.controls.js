@@ -1533,7 +1533,7 @@ module.exports = AFRAME.registerComponent('movement-controls', {
         end.copy(velocity).multiplyScalar(dt / 1000).add(start);
 
         var nav = el.sceneEl.systems.nav;
-        this.navGroup = this.navGroup === null ? nav.getGroup(start) : this.navGroup;
+        this.navGroup = this.navGroup;
         this.navNode = this.navNode || nav.getNode(start, this.navGroup);
         this.navNode = nav.clampStep(start, end, this.navGroup, this.navNode, clampedEnd);
         el.object3D.position.copy(clampedEnd);
