@@ -1527,12 +1527,12 @@ module.exports = AFRAME.registerComponent('movement-controls', {
 
       if (data.constrainToNavMesh && velocityCtrl.isNavMeshConstrained !== false) {
 
-        if (velocity.lengthSq() < EPS || el.sceneEl.systems.nav == undefined) return;
+        if (velocity.lengthSq() < EPS) return;
 
         start.copy(el.object3D.position);
         end.copy(velocity).multiplyScalar(dt / 1000).add(start);
 
-        var nav = el.sceneEl.systems.nav;
+        var nav = this.el.sceneEl.systems.nav;
         this.navGroup = this.navGroup === null ? nav.getGroup(start) : this.navGroup;
         this.navNode = this.navNode || nav.getNode(start, this.navGroup);
         this.navNode = nav.clampStep(start, end, this.navGroup, this.navNode, clampedEnd);
